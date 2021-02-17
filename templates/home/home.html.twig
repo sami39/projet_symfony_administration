@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block title %}admin aprenant{% endblock %}
+
+{% block body %}
+<h1>projet</h1>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<button type="submit" class="btn btn-success">ajouter</button>
+
+{{ form_end(form) }}
+
+ 
+<a class="btn btn-primary" href="{{path('aprenant',{'id': app.user.id})}}">info aprenant</a>
+
+ 
+    {% endblock %}

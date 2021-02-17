@@ -35,7 +35,7 @@ class Stagaire
     /**
      * @ORM\Column(type="integer")
      */
-    private $code_Postal;
+    private $codepostal;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -55,17 +55,17 @@ class Stagaire
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $lien_portfolio;
+    private $lienportfolio;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $lien_github;
+    private $liengithub;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $lien_cv;
+    private $liencv;
 
     /**
      * @ORM\Column(type="date")
@@ -90,7 +90,12 @@ class Stagaire
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $zone_de_mobilite;
+    private $zonedemobilite;
+
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
+     */
+    private $compte;
 
     public function getId(): ?int
     {
@@ -135,12 +140,12 @@ class Stagaire
 
     public function getCodePostal(): ?int
     {
-        return $this->code_Postal;
+        return $this->codepostal;
     }
 
-    public function setCodePostal(int $code_Postal): self
+    public function setCodePostal(int $codepostal): self
     {
-        $this->code_Postal = $code_Postal;
+        $this->codepostal = $codepostal;
 
         return $this;
     }
@@ -183,36 +188,36 @@ class Stagaire
 
     public function getLienPortfolio(): ?string
     {
-        return $this->lien_portfolio;
+        return $this->lienportfolio;
     }
 
-    public function setLienPortfolio(string $lien_portfolio): self
+    public function setLienPortfolio(string $lienportfolio): self
     {
-        $this->lien_portfolio = $lien_portfolio;
+        $this->lienportfolio = $lienportfolio;
 
         return $this;
     }
 
     public function getLienGithub(): ?string
     {
-        return $this->lien_github;
+        return $this->liengithub;
     }
 
-    public function setLienGithub(string $lien_github): self
+    public function setLienGithub(string $liengithub): self
     {
-        $this->lien_github = $lien_github;
+        $this->liengithub = $liengithub;
 
         return $this;
     }
 
     public function getLienCv(): ?string
     {
-        return $this->lien_cv;
+        return $this->liencv;
     }
 
-    public function setLienCv(string $lien_cv): self
+    public function setLienCv(string $liencv): self
     {
-        $this->lien_cv = $lien_cv;
+        $this->liencv = $liencv;
 
         return $this;
     }
@@ -267,12 +272,24 @@ class Stagaire
 
     public function getZoneDeMobilite(): ?string
     {
-        return $this->zone_de_mobilite;
+        return $this->zonedemobilite;
     }
 
-    public function setZoneDeMobilite(string $zone_de_mobilite): self
+    public function setZoneDeMobilite(string $zonedemobilite): self
     {
-        $this->zone_de_mobilite = $zone_de_mobilite;
+        $this->zonedemobilite = $zonedemobilite;
+
+        return $this;
+    }
+
+    public function getCompte(): ?User
+    {
+        return $this->compte;
+    }
+
+    public function setCompte(?User $compte): self
+    {
+        $this->compte = $compte;
 
         return $this;
     }

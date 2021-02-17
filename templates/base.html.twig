@@ -28,9 +28,19 @@
                              <span class="sr-only">(current)</span>
                          </a>
                      </li>
+                    {% if not app.user %}
+                    {% else %}
                      <li class="nav-item">
-                         <a class="nav-link" href=" ">Adminitration</a>
+                         <a class="nav-link" href="{{path('admin',{'id': app.user.id})}} ">espace aprenant</a>
                      </li>
+                      <li class="nav-item">
+                         <a class="nav-link" href="#">Ajout d'une entreprise</a>
+                     </li>
+                      <li class="nav-item">
+                         <a class="nav-link" href="# ">Ajout d'une candidature</a>
+                     </li>
+                     {% endif %}
+
 
 
                  </ul>

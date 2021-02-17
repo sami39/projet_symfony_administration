@@ -4,9 +4,17 @@ namespace App\Form;
 
 use App\Entity\Stagaire;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+ 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use FM\ElfinderBundle\Form\Type\ElFinderType;
+ 
+ 
 class StagaireType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -15,18 +23,23 @@ class StagaireType extends AbstractType
             ->add('Prenom')
             ->add('Nom')
             ->add('Adresse')
-            ->add('code_Postal')
+            ->add('codepostal')
             ->add('ville')
-            ->add('Telephone')
-            ->add('email')
-            ->add('lien_portfolio')
-            ->add('lien_github')
-            ->add('lien_cv')
+            ->add('Telephone',TextType::class)
+            ->add('email',EmailType::class)
+            ->add('lienportfolio')
+            ->add('liengithub')
+            ->add('liencv')
             ->add('Promtion')
-            ->add('Avatar')
+            ->add('Avatar',ElFinderType::class, ['instance' => 'form', 'enable' => true])
+                
+
             ->add('competance')
-            ->add('mobile')
-            ->add('zone_de_mobilite')
+                
+            
+           
+            ->add('zonedemobilite')
+            ->add('mobile',CheckboxType::class)
         ;
     }
 

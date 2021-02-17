@@ -19,22 +19,20 @@ class StagaireRepository extends ServiceEntityRepository
         parent::__construct($registry, Stagaire::class);
     }
 
-    // /**
-    //  * @return Stagaire[] Returns an array of Stagaire objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+  /**
+* @return Stagaire[] Returns an array of Stagaire objects
+*/
+public function findByExampleField($value)
+{
+return $this->createQueryBuilder('s')
+->andWhere('s.compte = :val')
+->setParameter('val', $value)
+->orderBy('s.id', 'ASC')
+->setMaxResults(10)
+->getQuery()
+->getResult()
+;
+}
 
     /*
     public function findOneBySomeField($value): ?Stagaire
