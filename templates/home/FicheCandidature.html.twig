@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+ 
+{% block title %}fiche candidature{% endblock %}
+
+{% block body %}
+
+     <table class="table table-dark">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nom d'entreprise</th>
+       
+      <th scope="col">date de demande</th>
+      <th scope="col">date de relance</th>
+      <th scope="col">date d'entretient</th>
+      <th scope="col">statut</th>
+      
+
+    </tr>
+  </thead>
+{% for projet in fichecandidature %}
+
+
+         
+
+        
+       <td>{{ projet.entreprises.Nom}}</td> 
+            
+            
+           <td>{{ projet.datedemande|date('Y-m-d') }} </td> 
+             <td>{{ projet.daterelance|date('Y-m-d') }} </td>  
+            <td>{{ projet.dateentretient|date('Y-m-d') }}</td>   
+              <td style="{% if  projet.statut == 'Relancée' %} background-color: #ffd97d; {% elseif  projet.statut == 'Positif' %} background-color: #60d394; {% elseif  projet.statut == 'Négatif' %} background-color: #ee6055; {% endif %}">{{ projet.statut }}</td>
+              <td><a href="{{ path('editcandidature', {'id' : projet.id}) }}" class="btn btn-warning">modifier</a></td>
+     <td><a href="{{ path('delete_candidature', {'id' : projet.id}) }}" class="btn btn-danger">suprimer</a></td>  
+             
+
+            </tr>
+ 
+    </article>
+      
+ 
+        
+    {% endfor %}
+      </tbody>
+
+    </table>
+           
+             
+     
+        
+    
+    {% endblock %}

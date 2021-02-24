@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% form_theme formcandidat 'bootstrap_4_layout.html.twig' %}
+{% block title %}candidature{% endblock %}
+
+{% block body %}
+{{ form_start(formcandidat) }}
+{{ form_widget(formcandidat) }}
+<button type="submit" class="btn btn-success">ajouter</button>
+ 
+<a class="btn btn-primary" href="{{path('fiche_candidature',{'id': app.user.id})}}">info candidature</a>
+
+{{ form_end(formcandidat) }}
+ 
+{% endblock %}

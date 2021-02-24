@@ -34,11 +34,13 @@
                          <a class="nav-link" href="{{path('admin',{'id': app.user.id})}} ">espace aprenant</a>
                      </li>
                       <li class="nav-item">
-                         <a class="nav-link" href="#">Ajout d'une entreprise</a>
+                         <a class="nav-link" href="{{path('candidature',{'id': app.user.id})}} ">Ajout d'une candidature</a>
                      </li>
                       <li class="nav-item">
-                         <a class="nav-link" href="# ">Ajout d'une candidature</a>
+                         <a class="nav-link" href="{{path('ajouentreprise',{'id': app.user.id})}}">Ajout d'une entreprise</a>
                      </li>
+                       <a class="nav-link" href="{{ path('app_logout') }}"> Déconnexion</a>
+                     
                      {% endif %}
 
 

@@ -7,11 +7,11 @@
 {{ form_start(form) }}
 {{ form_widget(form) }}
 <button type="submit" class="btn btn-success">ajouter</button>
-
+<a class="btn btn-primary" href="{{path('aprenant',{'id': app.user.id})}}">info aprenant</a>
 {{ form_end(form) }}
 
  
-<a class="btn btn-primary" href="{{path('aprenant',{'id': app.user.id})}}">info aprenant</a>
+
 
  
     {% endblock %}

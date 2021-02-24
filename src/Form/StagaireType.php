@@ -5,14 +5,15 @@ namespace App\Form;
 use App\Entity\Stagaire;
 use Symfony\Component\Form\AbstractType;
 
+use FM\ElfinderBundle\Form\Type\ElFinderType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
  
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use FM\ElfinderBundle\Form\Type\ElFinderType;
  
  
 class StagaireType extends AbstractType

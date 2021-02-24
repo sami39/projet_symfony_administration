@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+  {% form_theme formEditcandidature 'bootstrap_4_layout.html.twig' %}
+{% block title %}modifier candidature{% endblock %}
+
+{% block body %}
+ 
+ {{form_start(formEditcandidature)}}
+ {{form_widget(formEditcandidature)}}
+ 
+<button type="submit" class="btn btn-success">modifier</button>
+
+
+ 
+  
+{{form_end(formEditcandidature)}}
+    {% endblock %}

@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Stage.fr{% endblock %}
 
 {% block body %}
- 
+ {% if not app.user %}
+                    {% else %}
+ <br> Bonjour vous etes connecter avec ce compte: {{ app.user.username }}
+ {% endif %}
 {% endblock %}

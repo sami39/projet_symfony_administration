@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+  {% form_theme formEntreprise 'bootstrap_4_layout.html.twig' %}
+{% block title %}admin aprenant{% endblock %}
+
+{% block body %}
+ 
+ {{form_start(formEntreprise)}}
+ {{form_widget(formEntreprise)}}
+ 
+<button type="submit" class="btn btn-success">ajouter</button>
+
+
+ 
+  
+{{form_end(formEntreprise)}}
+    {% endblock %}

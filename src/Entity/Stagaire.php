@@ -43,7 +43,7 @@ class Stagaire
     private $ville;
 
     /**
-     * @ORM\Column(type="bigint")
+     * @ORM\Column(type="string")
      */
     private $Telephone;
 
