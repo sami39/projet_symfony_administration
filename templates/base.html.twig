@@ -30,6 +30,7 @@
                      </li>
                     {% if not app.user %}
                     {% else %}
+                    {% if is_granted('ROLE_STAGIAIRE') %}
                      <li class="nav-item">
                          <a class="nav-link" href="{{path('admin',{'id': app.user.id})}} ">espace aprenant</a>
                      </li>
@@ -39,6 +40,12 @@
                       <li class="nav-item">
                          <a class="nav-link" href="{{path('ajouentreprise',{'id': app.user.id})}}">Ajout d'une entreprise</a>
                      </li>
+                     {% endif %}
+                     {% if is_granted('ROLE_ENTREPRISE') %}
+                      <li class="nav-item">
+                         <a class="nav-link" href="{{path('resultat_stage')}}">resultat stage</a>
+                     </li>
+                    {% endif %}
                        <a class="nav-link" href="{{ path('app_logout') }}"> Déconnexion</a>
                      
                      {% endif %}

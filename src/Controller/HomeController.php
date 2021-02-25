@@ -18,8 +18,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+
+
 class HomeController extends AbstractController
 {
+
+
     /**
      * @Route("/", name="home")
      */
@@ -32,8 +36,20 @@ class HomeController extends AbstractController
     }
 
 
+    /**
+     * @Route("admin/profile/home/administration/resultat_stage", name="resultat_stage")
+     */
+    public function Resultat_stage(StagaireRepository $StagaireRepository): Response
+    { $projets=$StagaireRepository->findAll();
+        return $this->render('home/resultatstage.html.twig',[
+      
+          'projets'=>$projets
+        ]);
+    }
+
+
   /**
-     * @Route("home/administration/{id}", name="admin")
+     * @Route("users/home/administration/{id}", name="admin")
      */
 public function new(Request $request,StagaireRepository $StagaireRepository,User $user){
     $projects= new Stagaire();
@@ -58,7 +74,7 @@ public function new(Request $request,StagaireRepository $StagaireRepository,User
 
 
      /**
-     * @Route("home/administration/fiche_apprenent/{id}", name="aprenant")
+     * @Route("users/home/administration/fiche_apprenent/{id}", name="aprenant")
      */
     public function Fstagire(StagaireRepository $StagaireRepository): Response
 
@@ -72,7 +88,7 @@ public function new(Request $request,StagaireRepository $StagaireRepository,User
         ]);
     }
     /**
-     * @Route("profile/home/administration/edit/{id}", name="projet_edit")
+     * @Route("users/profile/home/administration/edit/{id}", name="projet_edit")
      */
      
     public function edit(Request $request, Stagaire $projects):Response{
@@ -94,7 +110,7 @@ public function new(Request $request,StagaireRepository $StagaireRepository,User
         'editForm'=>$form->createView()]);
       }
        /**
- * @Route("profile/home/administration/delete/{id}", name="delete_projet")
+ * @Route("users/profile/home/administration/delete/{id}", name="delete_projet")
  */
 public function delete(Request $request, stagaire $projects):Response{
    
@@ -104,7 +120,7 @@ public function delete(Request $request, stagaire $projects):Response{
      return $this->redirectToRoute('admin');
 }
  /**
-     * @Route("home/administration/candidature/{id}", name="candidature")
+     * @Route("users/home/administration/candidature/{id}", name="candidature")
      */
     public function Candidat(Request $request, CandidatureRepository $CandidatureRepository,User $user){
      
@@ -130,7 +146,7 @@ public function delete(Request $request, stagaire $projects):Response{
     
     }
     /**
-     * @Route("home/administration/candidature/entreprise/{id}", name="ajouentreprise")
+     * @Route("users/home/administration/candidature/entreprise/{id}", name="ajouentreprise")
      */
     public function AjoutE(Request $request, EntrepriseRepository  $EntrepriseRepository){
      
@@ -156,7 +172,7 @@ public function delete(Request $request, stagaire $projects):Response{
     
     }
        /**
-     * @Route("home/administration/fiche_candidature/{id}", name="fiche_candidature")
+     * @Route("users/home/administration/fiche_candidature/{id}", name="fiche_candidature")
      */
     public function Candidature(CandidatureRepository $candidatureRepository): Response
 
@@ -170,7 +186,7 @@ public function delete(Request $request, stagaire $projects):Response{
         ]);
     }
      /**
-     * @Route("profile/home/administration/fiche_candidature/edit/{id}", name="editcandidature")
+     * @Route("users/profile/home/administration/fiche_candidature/edit/{id}", name="editcandidature")
      */
      
     public function editCandidature(Request $request, Candidature $projects):Response{
@@ -194,7 +210,7 @@ public function delete(Request $request, stagaire $projects):Response{
       ]);
       }
             /**
- * @Route("profile/home/administration/fiche_candidature/delete/{id}", name="delete_candidature")
+ * @Route("users/profile/home/administration/fiche_candidature/delete/{id}", name="delete_candidature")
  */
 public function deletecandidature(Request $request, Candidature $projects):Response{
    
@@ -205,4 +221,5 @@ public function deletecandidature(Request $request, Candidature $projects):Respo
 
 
 }
+
 }

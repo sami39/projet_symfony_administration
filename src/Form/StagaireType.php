@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
  
  
 class StagaireType extends AbstractType
@@ -41,6 +42,18 @@ class StagaireType extends AbstractType
            
             ->add('zonedemobilite')
             ->add('mobile',CheckboxType::class)
+            ->add('Stage',ChoiceType::class, [
+                'choices' => [
+                    'En attente' => 'En attente',
+                     
+                    'Positif' => 'Positif',
+                    'Négatif' =>  'Négatif',
+                    
+                     
+                ],
+             
+            ])
+            ->add('societe')
         ;
     }
 

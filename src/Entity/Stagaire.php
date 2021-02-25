@@ -97,6 +97,16 @@ class Stagaire
      */
     private $compte;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Stage;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $societe;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -290,6 +300,30 @@ class Stagaire
     public function setCompte(?User $compte): self
     {
         $this->compte = $compte;
+
+        return $this;
+    }
+
+    public function getStage(): ?string
+    {
+        return $this->Stage;
+    }
+
+    public function setStage(string $Stage): self
+    {
+        $this->Stage = $Stage;
+
+        return $this;
+    }
+
+    public function getSociete(): ?string
+    {
+        return $this->societe;
+    }
+
+    public function setSociete(string $societe): self
+    {
+        $this->societe = $societe;
 
         return $this;
     }
