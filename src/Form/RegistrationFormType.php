@@ -33,7 +33,7 @@ class RegistrationFormType extends AbstractType
 
                 'expanded' => true,
                 'multiple' => true,
-                'label' => 'je suis:',
+                'label' => 'Je suis:',
 
             ])
             ->add('agreeTerms', CheckboxType::class, [

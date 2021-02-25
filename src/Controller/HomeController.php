@@ -2,13 +2,17 @@
 
 namespace App\Controller;
 
+
 use App\Entity\User;
 use App\Entity\Stagaire;
 use App\Form\StagaireType;
 use App\Form\CandidatureType;
 use App\Entity\Candidature;
 use App\Entity\Entreprise;
+use App\Form\AnnonceType;
 use App\Form\EntrepriseType;
+use App\Entity\Annonce;
+use App\Repository\AnnonceRepository;
 use App\Repository\StagaireRepository;
 use App\Repository\EntrepriseRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -221,5 +225,37 @@ public function deletecandidature(Request $request, Candidature $projects):Respo
 
 
 }
+/**
+     * @Route("entreprise/profile/home/administration/annonceAjout", name="annonceAjout")
+     */
+    public function Annonce (Request $request,AnnonceRepository $AnnonceRepository){
+      $projects= new Annonce();
+      $form =$this->createForm(AnnonceType::class,$projects);
+      $form->handleRequest($request);
+      $projects=$AnnonceRepository->findAll();
+      if($form->isSubmitted() && $form->isValid()){
+     $entityManager =$this->getDoctrine()->getManager();
+     $entityManager->persist($projects);
+     $entityManager->flush();
+     return $this->redirect($request->getUri());
+      }
+      return $this->render('home/AjoutAnnonce.html.twig',[
+        'form'=>$form->createView(),
+         
+      ]);
+    
+    }
+
+     /**
+     * @Route("users/profile/home/administration/annonce_vue", name="annonce_vue")
+     */
+    public function AfficheAnnonce(AnnonceRepository $AnnonceRepository): Response
+    {
+        $projets=$AnnonceRepository->findAll();
+        return $this->render('home/AfficheAnnonce.html.twig',[
+      
+          'projets'=>$projets
+        ]);
+    }
 
 }

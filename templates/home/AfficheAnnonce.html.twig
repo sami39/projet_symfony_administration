@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}annonce{% endblock %}
+
+{% block body %}
+
+<style>
+    .articles {
+        border-radius: 10px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
+        padding: 16px 20px;
+    }
+
+    img {
+        border-radius: 15px;
+        box-shadow: 0 5px 16px rgba(0, 0, 0, .25);
+
+    }
+</style>
+<h1>annonce</h1>
+{% for projet in projets %}
+<section class="articles mt-5">
+    <article class="mb-5">
+    
+        <h1>{{ projet.Entreprise }}</h1>
+         
+
+        <div class="content mt-3">
+            <h2>{{projet.Titre}}</h2>
+            <h3>{{projet.Contenu}}</h3>
+            <p>{{projet.Specilites}}</p>
+            
+
+        </div>
+    </article>
+
+
+</section>
+{% endfor %}   
+
+{% endblock %}
+           
+             
+     
+        
+    
+    
